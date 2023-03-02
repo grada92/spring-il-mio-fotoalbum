@@ -3,7 +3,6 @@ package org.corsojava.foto.controller;
 import java.util.List;
 
 import org.corsojava.foto.model.Categoria;
-import org.corsojava.foto.model.Foto;
 import org.corsojava.foto.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;

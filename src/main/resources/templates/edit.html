@@ -31,11 +31,19 @@
 							<input  type="radio" name="visibie" th:field="*{visibile}" value="1"/><label>Visibile</label>
 							<input  type="radio" name="visibile" th:field="*{visibile}" value="0"/><label>Non visibile</label>
 						</div>
+						
+				<h3>Categorie:</h3>
+	  			<div th:each="categoria : ${categorie}" class="form-check">
+	  				<input type="checkbox" class="form-check-input" 
+	  					th:value="${categoria.id}" th:field="*{categorie}"
+	  					th:id="|categoria_${categoria.id}">
+	  				<label class="form-check-label" 
+	  				th:text="${categoria.nome}" th:for="|categoria_${categoria.id}"></label>
+	  			</div>
 					<button type="submit" class="btn btn-danger mt-5">Salva</button>
 					<a class="btn btn-primary mt-5 " th:href="@{/foto}">Annulla</a>
 				</div>
 				
-
 			</div>
 		</form>
 

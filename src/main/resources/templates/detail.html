@@ -17,6 +17,13 @@
 			
 		</div>
 		
+		<h1>Categoria:</h1>
+				<div th:each=" categoria : ${detail.categorie}" >
+					<h3 th:text="${categoria.nome}" ></h3>
+				
+				</div>
+			
+		
 	
 
 	<div th:replace="~{fragment :: script}"></div>

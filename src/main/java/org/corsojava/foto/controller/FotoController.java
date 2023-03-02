@@ -2,7 +2,9 @@ package org.corsojava.foto.controller;
 
 import java.util.List;
 
+import org.corsojava.foto.model.Categoria;
 import org.corsojava.foto.model.Foto;
+import org.corsojava.foto.repository.CategoriaRepository;
 import org.corsojava.foto.repository.FotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class FotoController {
 	
 	@Autowired
 	FotoRepository fotorep ;
+	
+	@Autowired
+	CategoriaRepository catrep ;
 	
 	@GetMapping	
 	public String index(@RequestParam(name="keyword", required = false) String keyword,Model model) {		
@@ -48,8 +53,9 @@ public class FotoController {
 	public String create(Model model) {
 
 		Foto f = new Foto();
-		
+		List<Categoria> CateList=catrep.findAll();
 		model.addAttribute("foto", f);
+		model.addAttribute("categorie", CateList);
 
 		return "create";
 	}
@@ -75,7 +81,9 @@ public class FotoController {
 	public String edit(@PathVariable("id") Integer id,Model model ) {
 		
 		Foto f;
+		List<Categoria> CateList= catrep.findAll();
 		f = fotorep.getReferenceById(id);
+		model.addAttribute("categorie", CateList);
 		model.addAttribute("foto", f);
 		
 	
