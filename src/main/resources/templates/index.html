@@ -13,10 +13,16 @@
 	
 		<div th:each=" data : ${foto}">
 			<h3 th:text="${data.titoloFoto}" class="text-uppercase"></h3>
-			<h3 th:text="${data.id}" class="text-uppercase"></h3>
+	
 			<img th:src="${data.url}" width="200">
 			<a class="btn btn-success"
 					th:text="Visualizza" th:href="@{'foto/'+ ${data.id}}"></a> 
+					<a class="btn btn-primary px- mx-2" th:href="@{'/foto/edit/{id}'(id=${data.id})}">Modifica</a>
+					<form action="#" th:action="@{'/foto/delete/{id}'(id=${data.id})}" method="post">
+					  <button class="btn btn-danger px-3" type="submit" id="submitButton">
+					    <i class="fas fa-trash-alt"></i>
+					  </button>
+					</form>
 					
 		</div>
 		

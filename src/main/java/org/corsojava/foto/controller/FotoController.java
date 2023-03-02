@@ -70,4 +70,39 @@ public class FotoController {
 			
 		
 	}
+	
+	@GetMapping("/edit/{id}") //GESTISCE LE RICHIESTEDEL TIPO /FOTO/EDIT/ID
+	public String edit(@PathVariable("id") Integer id,Model model ) {
+		
+		Foto f;
+		f = fotorep.getReferenceById(id);
+		model.addAttribute("foto", f);
+		
+	
+		return "edit";
+	}
+	
+	@PostMapping("/edit/{id}")
+	public String update(
+			@Valid @ModelAttribute Foto formFoto,
+			BindingResult bindingResult,
+			Model model) {
+		if(bindingResult.hasErrors())
+			return "edit";
+		
+		fotorep.save(formFoto);
+		
+		return "redirect:/foto";
+		
+	}
+	
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+		
+		fotorep.deleteById(id);
+		
+		return "redirect:/foto";
+	}
+	
+	
 }
