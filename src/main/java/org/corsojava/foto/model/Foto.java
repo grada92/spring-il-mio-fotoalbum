@@ -20,9 +20,21 @@ public class Foto {
 	
 	private int id;
 	private String titoloFoto ;
+	private String tag;
+
 	private String descrizione;
 	private String url;
 	private boolean visibile;
+	
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
+
+
 	
 	
 	public int getId() {

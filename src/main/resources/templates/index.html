@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Album</title>
+<div th:replace="~{fragment :: head}"></div>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<a class="text-decoration-none btn btn-success mt-5 "
+			th:href="@{foto/create}">Inserisci Nuova Foto</a>
+	<div th:if="${foto.size>0}">
+	
+		<div th:each=" data : ${foto}">
+			<h3 th:text="${data.titoloFoto}" class="text-uppercase"></h3>
+			<h3 th:text="${data.id}" class="text-uppercase"></h3>
+			<img th:src="${data.url}" width="200">
+			<a class="btn btn-success"
+					th:text="Visualizza" th:href="@{'foto/'+ ${data.id}}"></a> 
+					
+		</div>
+		
+	</div>
+
+	<div th:replace="~{fragment :: script}"></div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<div th:replace="~{fragment :: head}"></div>
+</head>
+<body>
+	
+	
+		<div th:each=" data : ${detail}">
+			<h3 th:text="${data.descrizione}" class="text-uppercase"></h3>
+			
+			<a class="btn btn-success"
+					th:text="Homepage" th:href="@{/foto}"></a> 
+			
+			
+		</div>
+		
+	
+
+	<div th:replace="~{fragment :: script}"></div>
+</body>
+</html>
