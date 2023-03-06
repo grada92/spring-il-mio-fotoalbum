@@ -2,90 +2,75 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Album</title>
+<title>SERIE A</title>
 <div th:replace="~{fragment :: head}"></div>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body
-	style="background-image: url('https://cdn.skuola.net/w1200h687/news_foto/2022/12/serie-a.jpg'); background-repeat: no-repeat; background-size: cover;">
+	style="background-image: url('https://staticfanpage.akamaized.net/wp-content/uploads/sites/27/2022/10/GettyImages-1292422121-1666280489847-1200x675.jpg'); background-repeat: no-repeat; background-size: cover;">
 	<div class="text-center">
 		<img
 			src="https://upload.wikimedia.org/wikipedia/it/7/77/Serie-a-tim-2022-2023-logo.jpg"
 			width="100">
 	</div>
-	>
+	
 
-	<div class="d-flex justify-content-between px-5 pb-5">
+	<div class="d-flex justify-content-between pb-5 container-lg">
 		<a class="text-decoration-none btn btn-success mt-5 "
-			th:href="@{foto/create}">Inserisci Nuova Foto</a>
+			th:href="@{foto/create}">Inserisci Nuova Squadra</a>
 
 		<form action="foto" method="get" class="mt-5">
 			<input type="text" id="keyword" name="keyword" />
 			<button type="submit">Cerca</button>
+
+
 		</form>
 
 
 	</div>
+	
+	<table th:if="${foto.size>0}"
+		class="table table-striped table-dark container-lg">
+		<thead>
+			<tr class="bg-danger">
+				
+				<th width="100" scope="col" class="text-white bg-primary">SQUADRA</th>
+				<th width="300" scope="col" class="text-white bg-primary">DETTAGLI</th>
+				<th width="150" scope="col" class="text-white  bg-primary"></th>
+				
 
-
-	<div class="container-lg">
-
-		<div class="card1">
-
-
-			<div th:if="${foto.size>0}" class="d-flex justify-content-center">
-
-
-				<div th:each=" data : ${foto}" class="px-5">
-					<div class="card" >
-						<h3 th:text="${data.titoloFoto}" class="text-uppercase text-center"></h3>
-						<div>
-							<img th:src="${data.url}"
-								class="img-thumbnail">
-						</div>
-
-						<div class="d-flex pt-3">
-							<a class="btn btn-success" th:text="Visualizza"
-								th:href="@{'foto/'+ ${data.id}}"></a> <a
-								class="btn btn-primary px- mx-2"
-								th:href="@{'/foto/edit/{id}'(id=${data.id})}">Modifica</a>
-							<form action="#"
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="data: ${foto}">
+				<th th:text="${data.titoloFoto}" class="text-uppercase"></th>
+				<td th:text="${data.url}"></td>
+				
+				<th class="d-flex">
+					<form action="#"
 								th:action="@{'/foto/delete/{id}'(id=${data.id})}" method="post">
-								<button class="btn btn-danger px-3" type="submit"
+								<button class="btn btn-danger px-3 mx-2 my-2" type="submit"
 									id="submitButton">
-									<i class="fas fa-trash-alt"></i>
+									<i class="fas fa-trash-alt px-2"></i>
 								</button>
 							</form>
+					<a class="btn btn-success my-2" th:text="Visualizza"	th:href="@{'foto/'+ ${data.id}}"></a>
+					<a class="btn btn-primary px- mx-2 my-2" th:href="@{'/foto/edit/{id}'(id=${data.id})}">Modifica</a>
+							
+
+				</th>
+			
+				
+				
+				
+			</tr>
+		</tbody>
+	</table>
 
 
-						</div>
+	
 
-
-
-
-
-
-					</div>
-
-
-
-
-				</div>
-
-
-			</div>
-
-
-
-		</div>
-
-
-
-
-
-
-
-	</div>
 
 
 
